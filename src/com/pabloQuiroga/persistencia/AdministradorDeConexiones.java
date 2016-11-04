@@ -1,4 +1,4 @@
-package persistencia;
+package com.pabloQuiroga.persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,20 +12,30 @@ import javax.swing.JOptionPane;
 public class AdministradorDeConexiones {
 
     public static Connection conexion;
+	private static String dbDriver, dbServer, database, dbUser, dbPassword;
+	private static String dbConnString;
 	
+	/**
+	 * Establece parametros de la conexion
+	 */
+    private static void setConnString(){
+    	dbDriver = "com.mysql.jdbc.Driver";
+    	dbServer = "localhost:3306";
+    	database = "pruebasJava";
+    	dbUser = "root";
+    	dbPassword = "";
+    	dbConnString = "jdbc:mysql://" + dbServer + "/" + database;
+    }
     /**
      * Establece la conexion en base a datos predeterminados
      * @return Connection
      */
     public static Connection getConexion(){
-	if(conexion == null){
+    	if(conexion == null){
             try{
-                String dbDriver = "com.mysql.jdbc.Driver";
-		String dbConnString = "jdbc:mysql://localhost/test";
-		String dbUser = "root";
-		String dbPassword = "";
-		Class.forName(dbDriver);
-		conexion = DriverManager.getConnection(dbConnString, dbUser, dbPassword);
+                setConnString();
+            	Class.forName(dbDriver);
+            	conexion = DriverManager.getConnection(dbConnString, dbUser, dbPassword);
             }catch(SQLException sqlEx){
                 JOptionPane.showMessageDialog(null, "Error al establecer la conexion:\n" 
                         + sqlEx.toString(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -33,7 +43,7 @@ public class AdministradorDeConexiones {
                 JOptionPane.showMessageDialog(null, "Error en la configuracion del driver:\n"
                         + cnfEx.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-	}
+    	}
         return conexion;
     }
 	

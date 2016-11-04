@@ -1,10 +1,11 @@
 package pruebasjdbc;
 
-import entidades.Articulo;
 import entidades.Producto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import persistencia.AdministradorDeConexiones;
+
+import com.pabloQuiroga.modelos.Articulo;
+import com.pabloQuiroga.persistencia.AdministradorDeConexiones;
 
 /**
  * Proyecto para el manejo de JDBC

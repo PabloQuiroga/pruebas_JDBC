@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import persistencia.AdministradorDeConexiones;
+
+import com.pabloQuiroga.modelos.Articulo;
+import com.pabloQuiroga.persistencia.AdministradorDeConexiones;
 
 /**
  * Clase de entidad
@@ -27,7 +29,6 @@ public class Producto extends Articulo{
      */
     public static boolean conectar(){
         conn = AdministradorDeConexiones.getConexion();
-        //sentencia = null;
         boolean conectado = false;
         
         if(conn == null){
