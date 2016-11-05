@@ -10,6 +10,6 @@
 <body>
 	<h1>Prueba jdbc con servlets</h1>
 	<hr>
-	Hay <c:out "${listado.size()}" /> articulos
+        Hay <c:out value="${listado.size()}" /> articulos
 </body>
 </html>
