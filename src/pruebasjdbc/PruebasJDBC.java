@@ -1,12 +1,5 @@
 package pruebasjdbc;
 
-import entidades.Producto;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-
-import com.pabloQuiroga.modelos.Articulo;
-import com.pabloQuiroga.persistencia.AdministradorDeConexiones;
-
 /**
  * Proyecto para el manejo de JDBC
  * Clase main para pruebas
@@ -21,12 +14,12 @@ public class PruebasJDBC {
         
         //pruebaConexion();
         //pruebaBusqueda();
-        pruebaBusquedaTotal();
+        //pruebaBusquedaTotal();
         //pruebaAltaProducto();
         //pruebaUpdate();
         //pruebaEliminar();
     }
-
+/*
     private static void pruebaConexion(){
         AdministradorDeConexiones adm = new AdministradorDeConexiones();
         adm.probar();
@@ -68,5 +61,5 @@ public class PruebasJDBC {
     }
     private static void pruebaEliminar(){
         Producto.baja_producto(6);
-    }
+    }*/
 }

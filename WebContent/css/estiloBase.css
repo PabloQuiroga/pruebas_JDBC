@@ -1,0 +1,87 @@
+/* 
+    Created on : 19/10/2016, 01:05:34
+    Author     : Pablo Daniel Quiroga
+*/
+* {
+  margin: 0px;
+  padding: 0px;
+}
+header,
+nav,
+section,
+footer {
+  display: block;
+}
+#agrupar {
+  width: 960px;
+  margin: 15px auto;
+  text-align: left;
+}
+a:link{
+  text-decoration: none;
+  color: black;
+}
+a:visited{
+  color: black;
+}
+/* encabezado de pagina */
+#cabecera {
+  text-align: center;
+  background: #cccccc;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+/* barra de navegacion */
+#menu {
+  background: #cccccc;
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 2px solid black;
+  text-align: right;
+}
+#menu ul {
+  list-style: none;
+  margin: 0px 10px 0px 10px;
+  padding: 0px;
+}
+#menu li ul {
+  display: none;
+}
+#menu li ul li {
+  display: block;
+}
+#menu li ul li:hover {
+  color: white;
+  background-color: black;
+}
+#menu ul li {
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: center;
+  
+}
+#menu ul li:hover > ul {
+  display: block;
+  position: absolute;
+  background: #cccccc;
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 10px;
+}
+#menu ul li a {
+  display: block;
+  padding: 10px 0;
+  border-radius: 10px;
+  
+}
+#menu li a:hover {
+  color: white;
+  background-color: black;
+}
+#menu ul li a:hover {
+  color: white;
+  background-color: black;
+}

@@ -11,5 +11,10 @@
 	<h1>Prueba jdbc con servlets</h1>
 	<hr>
         Hay <c:out value="${listado.size()}" /> articulos
+        <ul id="listadoBoton" name="listadoBoton">
+            <li><a href="pages/carga.html">Cargar</a></li>
+            <li><a href="jsp2.jsp">Busqueda por Nombre</a></li>
+            <li><a href="jsp2.jsp">Mostrar Todos</a></li>
+        </ul>
 </body>
 </html>
