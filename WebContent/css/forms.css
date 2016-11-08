@@ -22,9 +22,9 @@ label{/* Alineacion y propiedades de labels */
 input{/* Alineacion y propiedades de campos de texto */
     width: 200px;
 }
-.titulo{/* Alineacion de titulo de form */
+#titulo{/* Alineacion de titulo de form */
     text-align: center;
 }
-.button{/* Alineacion y propiedades de button */
-    text-align: center;
+#btnEnviar{
+    width: 100px;
 }

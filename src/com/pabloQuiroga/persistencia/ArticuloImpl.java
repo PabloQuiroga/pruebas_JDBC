@@ -23,6 +23,15 @@ public class ArticuloImpl {
     public ArticuloImpl(){
         conn = AdministradorDeConexiones.getConexion();
     }
+    
+    private void finallizaConexion(){
+        try{
+            conn.close();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al terminar la conexion",
+                    "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }
     /**
      * comprueba la conexion
      * @return boolean 'isConnected'
@@ -43,7 +52,7 @@ public class ArticuloImpl {
     public ArrayList<Articulo> getArticulos(){
 	ArrayList<Articulo> listado = new ArrayList<>();
 		
-	String consulta = "SELECT codigo, nombre, cantidad, precio FROM productos";
+	String consulta = "SELECT codigo,nombre,cantidad,precio FROM productos";
 	
 	if(ifConecta()){
             try{
@@ -60,12 +69,12 @@ public class ArticuloImpl {
                     listado.add(a);
 		}
 				
-		rs.close();
 		ps.close();
-		conn.close();
+                // TODO verificar como manejar error al refrescar pagina luego de cerrar la conexion
+		//conn.close();
 				
             }catch (SQLException ex) {
-                    ExceptionSQL(consulta);
+                ExceptionSQL(consulta);
             }
         }
 		

@@ -4,10 +4,24 @@
     <head>
         <title>Carga de articulos</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="../css/forms.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Carga de articulos</h1>
+        <div id="titulo"><h1>Carga de articulos</h1></div>
+        
+        <form action="carga" method="post" id="formAlta" name="formAlta">
+            <label>Nombre </label>
+            <input type="text" name="name" id="name" required="required" autofocus title="Nombre del articulo">
+            <br><br>
+            <label>Cantidad </label>
+            <input type="number" name="cant" id="cant" title="Si no posee cantidad ingrese 0">
+            <br><br>
+            <label>Precio </label>
+            <input type="number" name="prize" id="prize" step="any" title="Para decimales ingrese con 'coma'">
+            <br><br>
+            <input type="submit" value="Enviar" id="btnEnviar" name="btnEnviar" title="Cargar articulo en listado">
+        </form>
         
     </body>
 </html>
