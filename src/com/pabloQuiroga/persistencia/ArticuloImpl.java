@@ -83,12 +83,12 @@ public class ArticuloImpl {
 	
     /**
      * Realiza alta de Producto en la base de datos
-     * @param p 
+     * @param a 
      */
     public void alta_producto(Articulo a){
-        String sentencia = "INSERT INTO test.productos (nombre, cantidad, precio)"
-                + "VALUES('" + a.getNombre() + "'," +
-                a.getCantidad() + "," + a.getPrecio() + ")";
+        String sentencia = "INSERT INTO productos (nombre, unidad_venta, precio, codigo, cantidad)"
+                + "VALUES('" + a.getNombre() + "','" + a.getUVenta() + "'," +
+                a.getPrecio() + "," + a.getId()+ "," + a.getCantidad() + ");";
         if(ifConecta()){
             try (Statement stmt = conn.createStatement()) {
                 stmt.execute(sentencia);

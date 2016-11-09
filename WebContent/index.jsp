@@ -3,27 +3,50 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Prueba jdbc con servlets</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Prueba jdbc con servlets</title>
+        <link rel="stylesheet" href="css/estiloBase.css" />
+    </head>
 <body>
+    <div id="cabecera">
 	<h1>Prueba jdbc con servlets</h1>
-        <ul id="listadoBoton" name="listadoBoton">
-            <li><a href="pages/carga.html">Cargar</a></li>
-            <li><a href="jsp2.jsp">Busqueda por Nombre</a></li>
-            <li><a href="#">Mostrar Todos</a></li>
-        </ul>
-	<hr>
-        Hay <c:out value="${listado.size()}" /> articulos
-        <hr>
+    </div>
+    <div id="menu">
         <ul>
-        <c:forEach items="${listado}" var="elemento" >
-            <li>Codigo: <c:out value="${elemento.getId()}" /></li>
-            Producto: <c:out value="${elemento.getNombre()}" /><br>
-            Precio: <c:out value="${elemento.getPrecio()}" /><br>
-            Cantidad en Stock: <c:out value="${elemento.getCantidad()}" />
-        </c:forEach>
+            <li><a href="<%=request.getContextPath() %>/agregar" >Agregar</a></li>
+            <li><a href="jsp2.jsp" >Busqueda</a></li>
+            <li><a href="#" >Mostrar Todos</a></li>
         </ul>
+    </div>
+            
+    <br>
+    <div><strong>Hay <c:out value="${listado.size()}" /> articulos</strong></div>
+    <hr>
+    
+    <table>
+        <tr>
+            <th>Codigo</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+        </tr>
+        <tbody>
+            <c:forEach items="${listado}" var="elemento" >
+                <tr>
+                    <td><c:out value="${elemento.getId()}" /></td>
+                    <td><c:out value="${elemento.getNombre()}" /></td>
+                    <td><c:out value="${elemento.getPrecio()}" /></td>
+                    <td><c:out value="${elemento.getCantidad()}" /></td>
+                    <td id="acciones">
+                        <a href="<%=request.getContextPath() %>/editar?id=<c:out value="${elemento.getId()}" />">Editar</a>
+                        <a href="<%=request.getContextPath() %>/eliminar?id=<c:out value="${elemento.getId()}" />">Eliminar</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+        
 </body>
 </html>

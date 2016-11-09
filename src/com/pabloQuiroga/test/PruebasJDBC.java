@@ -1,4 +1,10 @@
-package pruebasjdbc;
+package com.pabloQuiroga.test;
+
+import com.pabloQuiroga.modelos.Articulo;
+import com.pabloQuiroga.persistencia.AdministradorDeConexiones;
+import com.pabloQuiroga.persistencia.ArticuloImpl;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Proyecto para el manejo de JDBC
@@ -19,14 +25,15 @@ public class PruebasJDBC {
         //pruebaUpdate();
         //pruebaEliminar();
     }
-/*
+
     private static void pruebaConexion(){
         AdministradorDeConexiones adm = new AdministradorDeConexiones();
         adm.probar();
         adm.cerrarConnection();
     }
     private static void pruebaBusqueda(){
-        ArrayList<Articulo> listado = Producto.busqueda("id", "7");
+        ArticuloImpl imp = new ArticuloImpl();
+        ArrayList<Articulo> listado = imp.busqueda("id", "7");
         String mensaje = "";
         if(!listado.isEmpty()){
             for(Articulo x: listado){
@@ -38,7 +45,8 @@ public class PruebasJDBC {
         }
     }
     private static void pruebaBusquedaTotal(){
-        ArrayList<Articulo> listado = Producto.mostrarTodo();
+        ArticuloImpl imp = new ArticuloImpl();
+        ArrayList<Articulo> listado = imp.getArticulos();
         String mensaje = "";
         if(!listado.isEmpty()){
             for(Articulo x: listado){
@@ -49,17 +57,21 @@ public class PruebasJDBC {
             JOptionPane.showMessageDialog(null, mensaje);
         }
     }
-    private static void pruebaAltaProducto(){
+    private void pruebaAltaProducto(){
         Articulo p = new Articulo();
         p.setNombre("encendedor");
         p.setCantidad(1);
         p.setPrecio(5);
-        Producto.alta_producto(p);
+        
+        ArticuloImpl imp = new ArticuloImpl();
+        imp.alta_producto(p);
     }
-    private static void pruebaUpdate(){
-        Producto.update_producto("precio", "18", 3);
+    private void pruebaUpdate(){
+        ArticuloImpl imp = new ArticuloImpl();
+        imp.update_producto("precio", "18", 3);
     }
-    private static void pruebaEliminar(){
-        Producto.baja_producto(6);
-    }*/
+    private void pruebaEliminar(int x){
+        ArticuloImpl imp = new ArticuloImpl();
+        imp.baja_producto(x);
+    }
 }

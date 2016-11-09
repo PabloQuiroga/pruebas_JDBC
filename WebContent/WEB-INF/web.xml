@@ -4,9 +4,25 @@
         <servlet-name>Home</servlet-name>
         <servlet-class>com.pabloQuiroga.controllers.Home</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Agregar</servlet-name>
+        <servlet-class>com.pabloQuiroga.controllers.Agregar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NuevoArticulo</servlet-name>
+        <servlet-class>com.pabloQuiroga.controllers.NuevoArticulo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Agregar</servlet-name>
+        <url-pattern>/agregar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NuevoArticulo</servlet-name>
+        <url-pattern>/nuevo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

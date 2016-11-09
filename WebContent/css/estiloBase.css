@@ -85,3 +85,37 @@ a:visited{
   color: white;
   background-color: black;
 }
+#titulo{
+    text-align: center;
+    background: #cccccc;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+#acciones a:link, a:visited{
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+#acciones a:hover {
+    text-decoration: underline;
+}

@@ -1,4 +1,4 @@
-package pruebasjdbc;
+package com.pabloQuiroga.app;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -119,11 +119,9 @@ public class Inventario {
     }
     private void actualizar(){
         // bla bla bla
-        ventana.pack();
     }
     private void borrar(){
         // bla bla bla
-        ventana.pack();
     }
     private void salir(){
         //aqui cerrar los servicios antes
@@ -131,10 +129,8 @@ public class Inventario {
     }
     private void mostrar(){
         //bla bla bla
-        ventana.pack();
     }
     private void buscar(){
         //bla bla bla
-        ventana.pack();
     }
 }
