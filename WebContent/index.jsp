@@ -14,14 +14,15 @@
     </div>
     <div id="menu">
         <ul>
-            <li><a href="<%=request.getContextPath() %>/agregar" >Agregar</a></li>
-            <li><a href="jsp2.jsp" >Busqueda</a></li>
-            <li><a href="#" >Mostrar Todos</a></li>
+            <li><a href="pages/agregar.jsp" >Agregar</a></li>
         </ul>
     </div>
             
     <br>
     <div><strong>Hay <c:out value="${listado.size()}" /> articulos</strong></div>
+    <br>
+    <div id="mensajes"><c:out value="${mensaje}" /></div>
+    <br>
     <hr>
     
     <table>
@@ -40,8 +41,8 @@
                     <td><c:out value="${elemento.getPrecio()}" /></td>
                     <td><c:out value="${elemento.getCantidad()}" /></td>
                     <td id="acciones">
-                        <a href="<%=request.getContextPath() %>/editar?id=<c:out value="${elemento.getId()}" />">Editar</a>
-                        <a href="<%=request.getContextPath() %>/eliminar?id=<c:out value="${elemento.getId()}" />">Eliminar</a>
+                        <a href="<%=request.getContextPath() %>/pages/editar.jsp?id=<c:out value="${elemento.getId()}" />">Editar</a>
+                        <a href="<%=request.getContextPath() %>/pages/eliminar.jsp?id=<c:out value="${elemento.getId()}" />">Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>

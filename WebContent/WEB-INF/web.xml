@@ -5,24 +5,32 @@
         <servlet-class>com.pabloQuiroga.controllers.Home</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Agregar</servlet-name>
-        <servlet-class>com.pabloQuiroga.controllers.Agregar</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>NuevoArticulo</servlet-name>
         <servlet-class>com.pabloQuiroga.controllers.NuevoArticulo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar</servlet-name>
+        <servlet-class>com.pabloQuiroga.controllers.Eliminar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>com.pabloQuiroga.controllers.Update</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
         <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Agregar</servlet-name>
-        <url-pattern>/agregar</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>NuevoArticulo</servlet-name>
         <url-pattern>/nuevo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar</servlet-name>
+        <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/update</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

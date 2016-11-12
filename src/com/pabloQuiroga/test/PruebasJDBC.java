@@ -23,9 +23,23 @@ public class PruebasJDBC {
         //pruebaBusquedaTotal();
         //pruebaAltaProducto();
         //pruebaUpdate();
-        //pruebaEliminar();
+        pruebaEliminar(0);
+        //pruebaDuplicados();
     }
 
+    private static void pruebaDuplicados(){
+        Articulo a;
+        ArticuloImpl imp = new ArticuloImpl();
+        
+        
+        if(imp.getArticulo(0) != null){
+            a = imp.getArticulo(0);
+            System.out.println(a.toString());
+        }else{
+            System.out.println("articulo no existe");
+        }
+    }
+    
     private static void pruebaConexion(){
         AdministradorDeConexiones adm = new AdministradorDeConexiones();
         adm.probar();
@@ -70,7 +84,7 @@ public class PruebasJDBC {
         ArticuloImpl imp = new ArticuloImpl();
         imp.update_producto("precio", "18", 3);
     }
-    private void pruebaEliminar(int x){
+    private static void pruebaEliminar(int x){
         ArticuloImpl imp = new ArticuloImpl();
         imp.baja_producto(x);
     }

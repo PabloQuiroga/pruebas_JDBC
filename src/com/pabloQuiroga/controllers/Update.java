@@ -5,7 +5,6 @@
  */
 package com.pabloQuiroga.controllers;
 
-import com.pabloQuiroga.modelos.Articulo;
 import com.pabloQuiroga.persistencia.ArticuloImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,9 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Pablo Daniel Quiroga
  */
-public class NuevoArticulo extends HttpServlet {
+public class Update extends HttpServlet {
 
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,25 +31,18 @@ public class NuevoArticulo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        int x = Integer.parseInt(request.getParameter("id"));
+        String sentencia = "UPDATE productos SET nombre='" + request.getParameter("nombre") +
+                "', cantidad = " + Integer.parseInt(request.getParameter("cantidad")) + 
+                ", precio = " + Float.parseFloat(request.getParameter("precio")) 
+                        + " WHERE codigo=" + x;
+        
         ArticuloImpl imp = new ArticuloImpl();
-        int x = Integer.parseInt(request.getParameter("codigo"));
+        imp.actualiza(sentencia);
         
-        if(imp.getArticulo(x) != null){
-            do{
-                x++;
-            }while (imp.getArticulo(x) != null);
-        }
-        
-        Articulo a = new Articulo();
-            a.setId(x);
-            a.setNombre(request.getParameter("nombre"));
-            a.setCantidad(Integer.parseInt(request.getParameter("cantidad")));
-            a.setPrecio(Float.parseFloat(request.getParameter("precio")));
-        imp.alta_producto( a );
-
-        response.sendRedirect(request.getContextPath()+"/Home");
-        
-        
+        String mensaje = "Producto codigo " + x + "actualizado";
+        request.setAttribute("mensaje", mensaje);
+        request.getRequestDispatcher("Home").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -93,5 +84,4 @@ public class NuevoArticulo extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
 }

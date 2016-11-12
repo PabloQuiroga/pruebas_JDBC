@@ -92,6 +92,10 @@ a:visited{
   border-radius: 10px;
   padding: 20px;
 }
+#subtitulo{
+    text-align: center;
+    padding-top: 100px;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -101,7 +105,7 @@ table {
 td, th {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    padding: 5px;
 }
 
 tr:nth-child(even) {
@@ -118,4 +122,9 @@ tr:nth-child(even) {
 }
 #acciones a:hover {
     text-decoration: underline;
+}
+#mensajes{
+    font-weight: bold;
+    text-align: center;
+    color: red;
 }

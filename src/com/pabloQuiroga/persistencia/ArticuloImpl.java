@@ -70,14 +70,12 @@ public class ArticuloImpl {
 		}
 				
 		ps.close();
-                // TODO verificar como manejar error al refrescar pagina luego de cerrar la conexion
-		//conn.close();
-				
+                ps.close();
+                
             }catch (SQLException ex) {
                 ExceptionSQL(consulta);
             }
         }
-		
         return listado;
     }
 	
@@ -86,12 +84,17 @@ public class ArticuloImpl {
      * @param a 
      */
     public void alta_producto(Articulo a){
-        String sentencia = "INSERT INTO productos (nombre, unidad_venta, precio, codigo, cantidad)"
-                + "VALUES('" + a.getNombre() + "','" + a.getUVenta() + "'," +
-                a.getPrecio() + "," + a.getId()+ "," + a.getCantidad() + ");";
+        Articulo duplicado;
+        String sentencia = "INSERT INTO productos (nombre, precio, codigo, cantidad)"
+                + "VALUES('" + a.getNombre() + "'," + a.getPrecio() + "," + 
+                a.getId()+ "," + a.getCantidad() + ");";
         if(ifConecta()){
-            try (Statement stmt = conn.createStatement()) {
-                stmt.execute(sentencia);
+            duplicado = getArticulo(a.getId());
+            try{
+                if(duplicado == null){
+                    Statement stmt = conn.createStatement();
+                    stmt.execute(sentencia);
+                }
             }catch(SQLException ex){
                 ExceptionSQL(sentencia);
             }
@@ -137,15 +140,14 @@ public class ArticuloImpl {
      * @param x corresponde al ID a eliminar
      */
     public void baja_producto(int x){
-        String sentencia = "DELETE FROM productos WHERE id=" + x;
+        String sentencia = "DELETE FROM productos WHERE codigo=" + x;
         if(ifConecta()){
             try{
-                try (Statement stmt = conn.createStatement()) {
-                    stmt.execute(sentencia);
-                }
+                Statement stmt = conn.createStatement();
+                stmt.execute(sentencia);
+                
             }catch(SQLException ex){
-                ex.printStackTrace();
-                //ExceptionSQL(sentencia);
+                ExceptionSQL(sentencia);
             }
         }
     }
@@ -184,8 +186,55 @@ public class ArticuloImpl {
         }
         return articulos;
     }
-	private void ExceptionSQL(String query){
-        JOptionPane.showMessageDialog(null, "Error al ejecutar Query:\n" + query,
-                    "Error", JOptionPane.WARNING_MESSAGE);
+    
+    public Articulo getArticulo(int x){
+        String sentencia = "select * from productos where codigo=" + x;
+        Articulo a = null;
+        
+        if(ifConecta()){
+            try{
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sentencia);
+                if(rs.first()){
+                    a = new Articulo();
+                    a.setId(rs.getInt("codigo"));
+                    a.setNombre(rs.getString("nombre"));
+                    a.setCantidad(rs.getInt("cantidad"));
+                    a.setPrecio(rs.getFloat("precio"));
+                }
+                
+                rs.close();
+                stmt.close();
+            }catch(SQLException ex){
+                ExceptionSQL(sentencia);
+            }
+        }
+        
+        return a;
+    }
+    
+    /**
+     * Muestra mensaje emergente (modificar para web )
+     * @param query 
+     */
+    private void ExceptionSQL(String query){
+    JOptionPane.showMessageDialog(null, "Error al ejecutar Query:\n" + query,
+                "Error", JOptionPane.WARNING_MESSAGE);
+    }
+        
+    /**
+     * Actualiza producto con query obtenido desde servlet
+     * @param x 
+     */
+    public void actualiza(String x){
+        if(ifConecta()){
+            try{
+                Statement stmt = conn.createStatement();
+                stmt.executeUpdate(x);
+                stmt.close();
+            }catch(SQLException ex){
+                ex.printStackTrace();
+            }
+        }
     }
 }
